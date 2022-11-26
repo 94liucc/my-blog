@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { HashRouter } from "react-router-dom";
+import { Layout } from "antd";
+import { Header as HeaderComponent } from "layouts/Header";
+import "./App.css";
+import { Contents } from "page";
+import imgBack from "assets/image/back.png";
+// require("assets/image/back.png");
 function App() {
+  const { Header, Content } = Layout;
+  const MAIN_COLOR = "#f3f3f3";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <HashRouter>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundImage: `url(${imgBack})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <Layout
+          style={{
+            width: "100%",
+            height: "100%",
+            background: "transparent",
+            position: "absolute",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Header
+            style={{ background: "transparent", paddingInline: 0 }}
+            className="header"
+          >
+            <HeaderComponent></HeaderComponent>
+          </Header>
+          <Content className="content" style={{ background: "transparent" }}>
+            <Contents></Contents>
+          </Content>
+        </Layout>
+      </div>
+    </HashRouter>
   );
 }
 
